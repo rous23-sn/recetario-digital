@@ -1,0 +1,18 @@
+h1 {
+
+  font-family: Arial, sans-serif;
+  background-color: #c01f82;
+  color: rgb(218, 192, 192);
+  padding: 1rem;
+  text-align: center;
+}
+
+
+.button {
+  background-color: orange;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}

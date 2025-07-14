@@ -1,0 +1,11 @@
+ <h2>Recetas Rápidas</h2>
+    <div *ngIf="recetas.length > 0; else vacio">
+      <ul>
+        <li *ngFor="let receta of recetas">
+          {{ receta.nombre }} - {{ receta.tiempo }} minutos
+        </li>
+      </ul>
+    </div>
+    <ng-template #vacio>
+      <p>No hay recetas rápidas disponibles.</p>
+    </ng-template>

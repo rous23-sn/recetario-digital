@@ -1,0 +1,14 @@
+<h2>lista de recetas disponibles</h2>
+<ul>
+  <li *ngFor="let receta of recetas">
+    {{receta.id }} — {{ receta.dificultad }} ({{ receta.tiempo | number }} minutos)
+    <a [routerLink]="['/recetadetalle', receta.id]">Ver Detalle</a>
+  </li>
+</ul>
+
+<footer>
+  <label>
+    <input type="checkbox"checked>
+    
+  </label>
+</footer>

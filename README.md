@@ -1,59 +1,49 @@
-# Digital
+# Recetario Digital
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+Aplicación web desarrollada con Angular y Firebase que permite a los usuarios registrar, visualizar y gestionar recetas de cocina. Incluye autenticación, operaciones CRUD y funcionalidades interactivas.
 
-## Development server
 
-To start a local development server, run:
+## Tecnologías utilizadas
 
-```bash
-ng serve
-```
+- Angular Standalone v20
+- Firebase Firestore
+- Firebase Authentication
+- Firebase Hosting
+- AngularFire
+- Angular Material
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Requisitos para instalar y ejecutar
+1. Tener Node.js y Angular CLI instalados
+2. Clona el repositorio: `git clone https://github.com/rous23-sn/recetario-digital.git`
+3. Instala dependencias: `npm install`
+4. Ejecuta localmente: `ng serve`
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Arquitectura del Proyecto
 
-```bash
-ng generate --help
-```
+- `inicio`: Página principal de bienvenida
+- `recetas`: Muestra todas las recetas
+- `rapidas`: Filtra recetas rápidas (< 20 min)
+- `agregar-receta`: Crear nueva receta (autenticado)
+- `login` y `registro`: Autenticación de usuarios
+- `detalle-receta`: Vista detallada por ID
+- `services/`: Contiene `auth.service.ts` y `recetas.service.ts`
 
-## Building
 
-To build the project run:
+## Deploy Firebase
 
-```bash
-ng build
-```
+🔗 [recetario-digital.web.app](https://recetario-digital.web.app) *(URL pendiente)*
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+##  Video de Demostración
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+ [Video del proyecto](pendiente)
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+Desarrollado por mi  **Rosmery Sicha Navarro**  
+Curso: *Programación Web con Angular - 2025*
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

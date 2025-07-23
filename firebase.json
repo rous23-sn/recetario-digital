@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/resetario-digital",
+    "public": "dist/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

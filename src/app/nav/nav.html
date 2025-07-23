@@ -1,0 +1,12 @@
+
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/inicio">Inicio</a>
+  <a mat-button routerLink="/recetas">Recetas</a>
+  <a mat-button routerLink="/rapidas">Rápidas</a>
+  <a mat-button routerLink="/categorias" *ngIf="user$ | async">Categorías</a>
+  <a mat-button routerLink="/agregar" *ngIf="user$ | async">Agregar</a>
+  <a mat-button routerLink="/login" *ngIf="!(user$ | async)">Login</a>
+  <a mat-button routerLink="/registro" *ngIf="!(user$ | async)">Registro</a>
+  <button mat-button (click)="logout()" *ngIf="user$ | async">Logout</button>
+</mat-toolbar>
+<header style="text-align: center; margin-bottom: 1rem;">

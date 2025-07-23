@@ -1,14 +1,17 @@
-<h2>lista de recetas disponibles</h2>
-<ul>
-  <li *ngFor="let receta of recetas">
-    {{receta.id }} — {{ receta.dificultad }} ({{ receta.tiempo | number }} minutos)
-    <a [routerLink]="['/recetadetalle', receta.id]">Ver Detalle</a>
-  </li>
-</ul>
-
-<footer>
-  <label>
-    <input type="checkbox"checked>
-    
-  </label>
-</footer>
+<div class="container">
+      <h2>Recetas</h2>
+      <mat-form-field>
+        <mat-label>Buscar por nombre o categoría</mat-label>
+        <input matInput [(ngModel)]="searchTerm" placeholder="Buscar...">
+      </mat-form-field>
+      <mat-card *ngFor="let receta of (recetas$ | async | search: searchTerm)" class="receta-card">
+        <mat-card-title>{{ receta.nombre }}</mat-card-title>
+        <mat-card-content>
+          <p>Tiempo: {{ receta.tiempo }} minutos</p>
+          <p>Categoría: {{ receta.categoria }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-button [routerLink]="['/detalle', receta.id]">Ver Detalle</a>
+        </mat-card-actions>
+      </mat-card>
+    </div>

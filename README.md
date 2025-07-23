@@ -34,7 +34,9 @@ Aplicación web desarrollada con Angular y Firebase que permite a los usuarios r
 
 ## Deploy Firebase
 
-🔗 [recetario-digital.web.app](https://recetario-digital.web.app) *(URL pendiente)*
+Project Console: https://console.firebase.google.com/project/recetario-digital-c0d49/overview
+
+Hosting URL: https://recetario-digital-c0d49.web.app
 
 
 ##  Video de Demostración

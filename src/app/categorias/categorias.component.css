@@ -1,0 +1,4 @@
+    .container { max-width: 600px; margin: 20px auto; padding: 20px; }
+    mat-form-field { width: 100%; margin-bottom: 20px; }
+    button { margin-left: 10px; }
+    mat-list-item { margin-bottom: 10px; }

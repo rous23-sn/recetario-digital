@@ -1,3 +1,14 @@
-<section style="text-align: center; margin-top: 2rem;">
-      <h2>{{ mensaje }}</h2>
-    </section>
+    <div class="container">
+      <mat-card class="welcome-card">
+        <mat-card-title>Bienvenidos a la plataforma del restaurante</mat-card-title>
+        <mat-card-content>
+          <p>Descubre y comparte deliciosas recetas de nuestro restaurante.</p>
+          <p>Total de recetas: {{ (recetas$ | async)?.length || 0 }}</p>
+          <p>Explora nuestras <a routerLink="/recetas">recetas</a> o prueba las <a routerLink="/rapidas">recetas rápidas</a></p>
+          <p *ngIf="!(user$ | async)">¡<a routerLink="/registro">Regístrate</a> para agregar tus propias recetas!</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-raised-button color="primary" routerLink="/recetas">Ver Recetas</a>
+        </mat-card-actions>
+      </mat-card>
+    </div>

@@ -1,9 +1,63 @@
-<h2>Detalle de Receta</h2>
-    <div *ngIf="receta; else noencontrado">
-      <p><strong>ID:</strong> {{ receta.id }}</p>
-      <p><strong>Nombre:</strong>{{ receta.nombre }}</p>
-      <p><strong>Dificultad:</strong> {{ receta.dificultad }}</p>
-      <p><strong>Tiempo:</strong> {{ receta.tiempo }} minutos</p>
+<div class="container">
+    <h2>Detalle de Receta</h2>
+      <mat-card *ngIf="receta$ | async as receta">
+        <mat-card-title>{{ receta.nombre }}</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="editForm" *ngIf="isEditing">
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="nombre">
+              <mat-error *ngIf="editForm.get('nombre')?.hasError('required')">Nombre es requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Ingredientes (separados por comas)</mat-label>
+              <input matInput formControlName="ingredientes">
+              <mat-error *ngIf="editForm.get('ingredientes')?.hasError('required')">Ingredientes son requeridos</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Instrucciones</mat-label>
+              <textarea matInput formControlName="instrucciones"></textarea>
+              <mat-error *ngIf="editForm.get('instrucciones')?.hasError('required')">Instrucciones son requeridas</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Tiempo (minutos)</mat-label>
+              <input matInput formControlName="tiempo" type="number">
+              <mat-error *ngIf="editForm.get('tiempo')?.hasError('required')">Tiempo es requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Categoría</mat-label>
+              <mat-select formControlName="categoria">
+                <mat-option value="Desayuno">Desayuno</mat-option>
+                <mat-option value="Almuerzo">Almuerzo</mat-option>
+                <mat-option value="Cena">Cena</mat-option>
+                <mat-option value="Postre">Postre</mat-option>
+              </mat-select>
+              <mat-error *ngIf="editForm.get('categoria')?.hasError('required')">Categoría es requerida</mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="saveEdit()" [disabled]="editForm.invalid">Guardar</button>
+              <button mat-button (click)="cancelEdit()">Cancelar</button>
+            </mat-card-actions>
+          </form>
+          <div *ngIf="!isEditing">
+            <p><strong>Tiempo:</strong> {{ receta.tiempo }} minutos</p>
+            <p><strong>Categoría:</strong> {{ receta.categoria }}</p>
+            <p><strong>Ingredientes:</strong></p>
+            <ul>
+              <li *ngFor="let ingrediente of receta.ingredientes">{{ ingrediente }}</li>
+            </ul>
+            <p><strong>Instrucciones:</strong> {{ receta.instrucciones }}</p>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="startEdit(receta)">Editar</button>
+              <button mat-raised-button color="warn" (click)="deleteReceta()">Eliminar</button>
+              <button mat-button (click)="goBack()">Volver</button>
+              <button (click)="saveEdit()" [disabled]="editForm.invalid">Guardar</button>
+            </mat-card-actions>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
-    <ng-template #noencontrado>
-      <p>Receta  no deseada </p>
+<div *ngIf="!(receta$ | async)">
+  <p>Cargando receta...</p>   
+</div>
+

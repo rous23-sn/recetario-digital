@@ -1,1 +1,17 @@
-<p>categorias works!</p>
+    <div class="container">
+      <h2>Gestionar Categorías</h2>
+      <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Nombre de la Categoría</mat-label>
+          <input matInput formControlName="nombre">
+          <mat-error *ngIf="categoriaForm.get('nombre')?.hasError('required')">Nombre es requerido</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="categoriaForm.invalid">Agregar</button>
+      </form>
+      <mat-list>
+        <mat-list-item *ngFor="let categoria of categorias$ | async">
+          {{ categoria.nombre }}
+          <button mat-icon-button color="warn" (click)="deleteCategoria(categoria.id!)">X</button>
+        </mat-list-item>
+      </mat-list>
+    </div>

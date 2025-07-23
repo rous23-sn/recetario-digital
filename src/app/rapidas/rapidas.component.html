@@ -1,11 +1,13 @@
- <h2>Recetas Rápidas</h2>
-    <div *ngIf="recetas.length > 0; else vacio">
-      <ul>
-        <li *ngFor="let receta of recetas">
-          {{ receta.nombre }} - {{ receta.tiempo }} minutos
-        </li>
-      </ul>
+ <div class="container">
+      <h2>Recetas Rápidas (≤ 10 minutos)</h2>
+      <mat-card *ngFor="let receta of recetasRapidas$ | async" class="receta-card">
+        <mat-card-title>{{ receta.nombre }}</mat-card-title>
+        <mat-card-content>
+          <p>Tiempo: {{ receta.tiempo }} minutos</p>
+          <p>Categoría: {{ receta.categoria }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-button [routerLink]="['/detalle', receta.id]">Ver Detalle</a>
+        </mat-card-actions>
+      </mat-card>
     </div>
-    <ng-template #vacio>
-      <p>No hay recetas rápidas disponibles.</p>
-    </ng-template>

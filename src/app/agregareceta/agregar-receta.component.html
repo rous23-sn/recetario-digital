@@ -1,1 +1,36 @@
-<p>agregar-receta works!</p>
+ <div class="container">
+      <h2>Agregar Receta</h2>
+      <form [formGroup]="recetaForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre">
+          <mat-error *ngIf="recetaForm.get('nombre')?.hasError('required')">Nombre es requerido</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Ingredientes (separados por comas)</mat-label>
+          <input matInput formControlName="ingredientes">
+          <mat-error *ngIf="recetaForm.get('ingredientes')?.hasError('required')">Ingredientes son requeridos</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Instrucciones</mat-label>
+          <textarea matInput formControlName="instrucciones"></textarea>
+          <mat-error *ngIf="recetaForm.get('instrucciones')?.hasError('required')">Instrucciones son requeridas</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tiempo (minutos)</mat-label>
+          <input matInput formControlName="tiempo" type="number">
+          <mat-error *ngIf="recetaForm.get('tiempo')?.hasError('required')">Tiempo es requerido</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Categoría</mat-label>
+          <mat-select formControlName="categoria">
+            <mat-option value="Desayuno">Desayuno</mat-option>
+            <mat-option value="Almuerzo">Almuerzo</mat-option>
+            <mat-option value="Cena">Cena</mat-option>
+            <mat-option value="Postre">Postre</mat-option>
+          </mat-select>
+          <mat-error *ngIf="recetaForm.get('categoria')?.hasError('required')">Categoría es requerida</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="recetaForm.invalid">Agregar</button>
+      </form>
+    </div>
